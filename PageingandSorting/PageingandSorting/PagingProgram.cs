@@ -9,45 +9,55 @@ namespace PageingandSorting
         static void Main(string[] args)
         {
             Pagining page = new Pagining();
+            
             page.pagingmethod();
         }
     }
 
     public class Pagining
     {
-       public void pagingmethod()
+        public void pagingmethod()
         {
             // You are trying to do paging by using skip and take operators
             //declare the pagesize
             //declare the pagenumber
             //check the condtion between the pages meaning How many pages you are trying to do.
             //and print the statment
+            //In order to repeate the loop use do while
 
-            List<Student> students = Student.GetAllStudentInfo;
-            int pagenumber = 0;
+            //do
+            //{
+                List<Student> students = Student.GetAllStudentInfo;
+                int pagenumber = 0;
 
-            Console.WriteLine("Hi Please Select the PageNumbers between 1---- 4");
+                Console.WriteLine("Hi Please Select the PageNumbers between 1---- 4");
 
-            if (int.TryParse(Console.ReadLine(), out pagenumber))
-            {
-                if (pagenumber >= 1 && pagenumber <= 4)
+                if (int.TryParse(Console.ReadLine(), out pagenumber))
                 {
-                    int pagesize = 3;
-                    IEnumerable<Student> results = students.Skip((pagenumber - 1) * pagesize).Take(pagesize);
-                    foreach (Student s in results)
+                    if (pagenumber >= 1 && pagenumber <= 4)
                     {
-                        Console.WriteLine(s.Name + "\t" + s.StudentId + "\t" + s.TotalMarks);
+                        int pagesize = 3;
+                        IEnumerable<Student> results = students.Skip((pagenumber - 1) * pagesize).Take(pagesize);
+                        foreach (Student s in results)
+                        {
+                            Console.WriteLine(s.Name + "\t" + s.StudentId + "\t" + s.TotalMarks);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please Select the PageNumbers rage between 1---- 4");
                     }
                 }
                 else
                 {
                     Console.WriteLine("Please Select the PageNumbers rage between 1---- 4");
                 }
-            }
-            else
-            {
-                Console.WriteLine("Please Select the PageNumbers rage between 1---- 4");
-            }
+                //else if (pagenumber == 2 || pagenumber == 3)
+                //{
+                //    continue;
+                //}
+
+            //} while (1 == 1);
         }
     }
 }
